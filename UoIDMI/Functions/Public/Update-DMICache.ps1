@@ -33,8 +33,8 @@ function Update-DMICache {
         $Script:BannerOrgCodes.Clear()
         $Script:Deptnames.Clear()
 
-        $Script:BannerOrgCodes += (Invoke-SqliteQuery -Datasource $Script:SQLiteDBPath -Query "SELECT Banner_Org FROM DMI" -As DataRow).Banner_Org
-        $Script:Deptnames += (Invoke-SqliteQuery -Datasource $Script:SQLiteDBPath -Query "SELECT Deptname FROM DMI" -As DataRow).Deptname
+        $Script:BannerOrgCodes += (Get-DMIDepartment).Banner_Org
+        $Script:Deptnames += (Get-DMIDepartment).Deptname
     }
     
     end {
