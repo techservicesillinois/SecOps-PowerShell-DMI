@@ -1,3 +1,11 @@
+<#
+.Synopsis
+   Creates a new instance of a SQLite database locally to store the DMI information in. This should be created automatically by the module.
+.DESCRIPTION
+   Creates a new instance of a SQLite database locally to store the DMI information in. This should be created automatically by the module.
+.EXAMPLE
+   PS C:\> New-DMISQLiteDB
+#>
 function New-DMISQLiteDB {
     [CmdletBinding()]
     param (

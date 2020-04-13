@@ -28,7 +28,6 @@ PS C:\> Update-DMICache
 
 This will clear out and populate the SQLite database. It will also update the tab completion cache for Get-DMIDepartment.
 
-
 ## PARAMETERS
 
 ### -ParamCacheOnly
