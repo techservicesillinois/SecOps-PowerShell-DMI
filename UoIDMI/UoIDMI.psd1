@@ -12,7 +12,7 @@
 RootModule = 'UoIDMI.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -30,10 +30,10 @@ CompanyName = 'The University of Illinois'
 Copyright = 'The University of Illinois Board of Trustees'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'PowerShell integration for Division of Management Information University of Illinois at Urbana-Champaign'
 
 # Minimum version of the PowerShell engine required by this module
-# PowerShellVersion = ''
+PowerShellVersion = '7.0.0'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
@@ -95,13 +95,13 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = @('University','Illinois','DMI','Division', 'Management', 'Information')
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/ncsa/parfu_archive_tool/blob/master/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/techservicesillinois/SecOps-PowerShell-DMI'
 
         # A URL to an icon representing this module.
         # IconUri = ''
