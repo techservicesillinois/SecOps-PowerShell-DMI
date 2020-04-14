@@ -69,7 +69,7 @@ Describe 'Get-DMIDepartment'{
 
     It 'Accepts pipeline input for BannerOrg' {
         $SampleDepartment = (Get-DMIDepartment)[0]
-        ($SampleDepartment.Banner_Org | Get-DMIDepartment | Measure-Object).Count -eq 1
+        ($SampleDepartment.Banner_Org | Get-DMIDepartment | Measure-Object).Count -eq 1 | Should -Be $True
     }
 
     It 'Doesn''t allow BannerOrg and Deptname together' {
