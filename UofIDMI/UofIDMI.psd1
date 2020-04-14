@@ -98,7 +98,7 @@ PrivateData = @{
         Tags = @('University','Illinois','DMI','Division', 'Management', 'Information')
 
         # A URL to the license for this module.
-        LicenseUri = 'https://github.com/ncsa/parfu_archive_tool/blob/master/LICENSE'
+        LicenseUri = 'https://github.com/techservicesillinois/SecOps-PowerShell-DMI/blob/master/LICENSE'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/techservicesillinois/SecOps-PowerShell-DMI'
