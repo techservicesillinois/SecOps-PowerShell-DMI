@@ -39,11 +39,11 @@ function Get-DMIDepartment {
         [parameter(ValueFromPipeline = $true,
             ParameterSetName = 'BannerOrg')]
         [ValidateSet( [ValidBannerOrgGenerator] )]    
-        [String[]]$BannerOrg = '%',
+        [String]$BannerOrg = '%',
 
         [parameter(ParameterSetName = 'Deptname')]
         [ValidateSet( [ValidDeptnameGenerator] )]    
-        [String[]]$Deptname = '%'
+        [String]$Deptname = '%'
     )
 
     begin {
