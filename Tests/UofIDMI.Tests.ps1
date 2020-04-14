@@ -38,7 +38,7 @@ Describe 'Update-DMICache'{
     }
 
     InModuleScope 'UofIDMI' {
-        It 'Populates the dynamic parameter cache'{
+        It 'Populates the dynamic parameter cache' {
             $Script:BannerOrgCodes.clear()
             $Script:Deptnames.clear()
             Update-DMICache -ParamCacheOnly -ErrorAction Stop
@@ -65,5 +65,14 @@ Describe 'Get-DMIDepartment'{
     It 'Returns a single result from Deptname' {
         $SampleDepartment = (Get-DMIDepartment)[0]
         (Get-DMIDepartment -Deptname $SampleDepartment.Deptname | Measure-Object).Count -eq 1 | Should -Be $True
+    }
+
+    It 'Accepts pipeline input for BannerOrg' {
+        $SampleDepartment = (Get-DMIDepartment)[0]
+        ($SampleDepartment.Banner_Org | Get-DMIDepartment | Measure-Object).Count -eq 1
+    }
+
+    It 'Doesn''t allow BannerOrg and Deptname together' {
+        { Get-DMIDepartment -BannerOrg 'random' -Deptname 'random' } | Should -Throw
     }
 }

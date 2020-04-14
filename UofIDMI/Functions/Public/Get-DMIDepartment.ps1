@@ -34,11 +34,14 @@ class ValidDeptnameGenerator : IValidateSetValuesGenerator {
     This will return a specific department based on department name.
 #>
 function Get-DMIDepartment {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParametersetname='BannerOrg')]
     param (    
+        [parameter(ValueFromPipeline = $true,
+            ParameterSetName = 'BannerOrg')]
         [ValidateSet( [ValidBannerOrgGenerator] )]    
         [String]$BannerOrg = '%',
 
+        [parameter(ParameterSetName = 'Deptname')]
         [ValidateSet( [ValidDeptnameGenerator] )]    
         [String]$Deptname = '%'
     )
