@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Install pester
+    - name: Install dependencies
       run: Install-Module -Name 'Pester','PSSQLite' -Force -SkipPublisherCheck
       shell: pwsh
     - name: Run tests
