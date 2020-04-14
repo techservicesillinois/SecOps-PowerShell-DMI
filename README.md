@@ -14,8 +14,7 @@ This module is intended for use with PS 7+
 3) Any new functionality should have associated pester tests added to the UoIDMI.Tests.ps1 file and by extension no PR should be accepted without passing pester tests.
 
 # To Do
-1) Automate pester testing with GitHub Actions
-2) Do the following after [this](https://github.com/RamblingCookieMonster/PSSQLite/pull/26) pull request is merged into PSSqlite
+1) Do the following after [this](https://github.com/RamblingCookieMonster/PSSQLite/pull/26) pull request is merged into PSSqlite
    1) Remove '-As DataRow' references from Get-DMIDepartment and Update-DMICache
    2) Update manifest to require the new version of PSSqlite
    3) Officially declare Mac/Linux support
