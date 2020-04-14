@@ -1,6 +1,6 @@
 ---
-external help file: UoIDMI-help.xml
-Module Name: UoIDMI
+external help file: UofIDMI-help.xml
+Module Name: UofIdmi
 online version:
 schema: 2.0.0
 ---
@@ -8,7 +8,8 @@ schema: 2.0.0
 # New-DMISQLiteDB
 
 ## SYNOPSIS
-Creates a new instance of a SQLite database locally to store the DMI information in. This should be created automatically by the module.
+Creates a new instance of a SQLite database locally to store the DMI information in.
+This should be created automatically by the module.
 
 ## SYNTAX
 
@@ -17,13 +18,14 @@ New-DMISQLiteDB [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new instance of a SQLite database locally to store the DMI information in. This should be created automatically by the module.
+Creates a new instance of a SQLite database locally to store the DMI information in.
+This should be created automatically by the module.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> New-DMISQLiteDB
+### EXAMPLE 1
+```
+New-DMISQLiteDB
 ```
 
 ## PARAMETERS
@@ -33,11 +35,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

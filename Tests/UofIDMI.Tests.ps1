@@ -1,4 +1,4 @@
-[String]$ModuleRoot = Join-Path -Path (Split-Path -Path $PSScriptRoot -Parent) -ChildPath 'UoIDMI'
+[String]$ModuleRoot = Join-Path -Path (Split-Path -Path $PSScriptRoot -Parent) -ChildPath 'UofIDMI'
 Import-Module -Name $ModuleRoot -ArgumentList $True
 [String]$DBPath = Join-Path -Path $ModuleRoot -ChildPath 'DMI.SQLite'
 
@@ -37,7 +37,7 @@ Describe 'Update-DMICache'{
         $FirstTimestamp.LastWriteTime -eq $SecondTimestamp.LastWriteTime | Should -Be $True
     }
 
-    InModuleScope 'UoIDMI' {
+    InModuleScope 'UofIDMI' {
         It 'Populates the dynamic parameter cache'{
             $Script:BannerOrgCodes.clear()
             $Script:Deptnames.clear()

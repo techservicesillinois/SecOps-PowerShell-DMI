@@ -1,6 +1,6 @@
 ---
-external help file: UoIDMI-help.xml
-Module Name: UoIDMI
+external help file: UofIDMI-help.xml
+Module Name: UofIdmi
 online version:
 schema: 2.0.0
 ---
@@ -21,12 +21,13 @@ This command will update the contents of the SQLite database created by New-DMIS
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> Update-DMICache
+### EXAMPLE 1
+```
+Update-DMICache
 ```
 
-This will clear out and populate the SQLite database. It will also update the tab completion cache for Get-DMIDepartment.
+This will clear out and populate the SQLite database.
+It will also update the tab completion cache for Get-DMIDepartment.
 
 ## PARAMETERS
 
@@ -40,7 +41,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -50,11 +51,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

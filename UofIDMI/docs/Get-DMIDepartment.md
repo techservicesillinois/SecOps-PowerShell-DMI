@@ -1,6 +1,6 @@
 ---
-external help file: UoIDMI-help.xml
-Module Name: UoIDMI
+external help file: UofIDMI-help.xml
+Module Name: UofIdmi
 online version:
 schema: 2.0.0
 ---
@@ -21,23 +21,23 @@ Returns the information for all departments or a specified department.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> Get-DMIDepartment
+### EXAMPLE 1
+```
+Get-DMIDepartment
 ```
 
 This will return all departments.
 
-### Example 2
-```powershell
-PS C:\> Get-DMIDepartment -BannerOrg '1A1-NA-NA0-283'
+### EXAMPLE 2
+```
+Get-DMIDepartment -BannerOrg '1A1-NA-NA0-283'
 ```
 
 This will return a specific department based on banner organization code.
 
-### Example 3
-```powershell
-PS C:\> Get-DMIDepartment -Deptname 'Academic Outreach'
+### EXAMPLE 3
+```
+Get-DMIDepartment -Deptname 'Academic Outreach'
 ```
 
 This will return a specific department based on department name.
@@ -45,33 +45,34 @@ This will return a specific department based on department name.
 ## PARAMETERS
 
 ### -BannerOrg
-Banner organization code. This is an alphanumeric code in 4 sections. Ex: '1A1-NA-NA0-283'
+Banner organization code.
+This is an alphanumeric code in 4 sections.
+Ex: '1A1-NA-NA0-283'
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values:
 
 Required: False
-Position: 0
-Default value: None
+Position: 1
+Default value: %
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Deptname
-Plaint text department name. Ex: 'Academic Outreach'
+Plaint text department name.
+Ex: 'Academic Outreach'
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values:
 
 Required: False
-Position: 1
-Default value: None
+Position: 2
+Default value: %
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -81,11 +82,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS
