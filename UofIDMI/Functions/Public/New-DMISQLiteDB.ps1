@@ -18,6 +18,7 @@ function New-DMISQLiteDB {
     
     process {
         if(Test-Path -Path $Script:SQLiteDBPath){
+            Write-Verbose -Message "Existing database found. Removing $($Script:SQLiteDBPath)"
             Remove-Item -Path $Script:SQLiteDBPath -Force
         }
         
