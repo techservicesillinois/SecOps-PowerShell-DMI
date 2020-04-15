@@ -17,6 +17,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run publish script
       env:
-        super_secret: ${{ secrets.NuGetApiKey }}
+        NuGetApiKey: ${{ secrets.NuGetApiKey }}
       run: .\PublishToGallery.ps1
       shell: pwsh
