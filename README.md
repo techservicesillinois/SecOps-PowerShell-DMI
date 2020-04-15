@@ -2,8 +2,9 @@
 This is a PowerShell integration for Division of Management Information at University of Illinois at Urbana-Champaign. This is the system used to join information from sources like CDB to find out who an asset belongs to.
 
 # How do I install it?
+**This is currently windows only for the time being**
 1) Install Powershell 7, you have options for this. [Chocolatey](https://chocolatey.org/packages/powershell-core) or [GitHub](https://github.com/PowerShell/PowerShell/releases).
-2) For the current GA release you can use the [PSGallery](https://www.powershellgallery.com/packages/UofIDMI) or you can use the Makefile provided to set set it up from the repository.
+2) For the current GA release you can use the [PSGallery](https://www.powershellgallery.com/packages/UofIDMI) or you can use the provided Makefile to set it up from the repository.
 
 # How does it work?
 1) Using the URL specified in the settings.json file DMI information will be fetched via the provided unauthenticated tab seperated web page.
