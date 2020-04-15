@@ -22,12 +22,15 @@ function Update-DMICache {
     
     process {
         if(!$ParamCacheOnly){
-            Invoke-SqliteQuery -DataSource $Script:SQLiteDBPath -Query "DELETE FROM DMI"
-            
             $DMI = [System.Collections.ArrayList]@()
-            $DMI += Invoke-RestMethod -Method 'Get' -Uri $Script:Settings.DMIURI | ConvertFrom-Csv -Delimiter "`t"
+            $DMI += Invoke-RestMethod -Method 'Get' -Uri $Script:Settings.DMIURI -ErrorAction Stop | ConvertFrom-Csv -Delimiter "`t"
 
-            Invoke-SQLiteBulkCopy -DataSource $Script:SQLiteDBPath -DataTable ($DMI | Out-DataTable) -Table 'DMI' -Force
+            if($DMI.count -gt 0)
+            {
+                Invoke-SqliteQuery -DataSource $Script:SQLiteDBPath -Query "DELETE FROM DMI"
+
+                Invoke-SQLiteBulkCopy -DataSource $Script:SQLiteDBPath -DataTable ($DMI | Out-DataTable) -Table 'DMI' -Force
+            }
         }
 
         $Script:BannerOrgCodes.Clear()
