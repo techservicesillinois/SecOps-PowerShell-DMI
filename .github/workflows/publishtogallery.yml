@@ -3,7 +3,7 @@ name: PublishToGallery
 
 on:
   release:
-    types: [published, created, edited]
+    types: [created]
 jobs:
   build:
 
