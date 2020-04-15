@@ -1,6 +1,6 @@
 ---
 external help file: UofIDMI-help.xml
-Module Name: UofIdmi
+Module Name: UofIDMI
 online version:
 schema: 2.0.0
 ---
@@ -12,8 +12,14 @@ Returns the information for all departments or a specified department.
 
 ## SYNTAX
 
+### BannerOrg (Default)
 ```
-Get-DMIDepartment [[-BannerOrg] <String>] [[-Deptname] <String>] [<CommonParameters>]
+Get-DMIDepartment [-BannerOrg <String>] [<CommonParameters>]
+```
+
+### Deptname
+```
+Get-DMIDepartment [-Deptname <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,13 +57,13 @@ Ex: '1A1-NA-NA0-283'
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: BannerOrg
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: %
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -67,11 +73,11 @@ Ex: 'Academic Outreach'
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Deptname
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: %
 Accept pipeline input: False
 Accept wildcard characters: False
