@@ -16,6 +16,7 @@ This is a PowerShell integration for Division of Management Information at Unive
 1) Ensure naming schemes are kept consistent with the Verb-DMINoun convention.
 2) Ensure the docs folder is kept up to date as well as the comment based help. The docs are generated via the PlatyPS module available on the PS Gallery.
 3) Any new functionality should have associated pester tests added to the UofIDMI.Tests.ps1 file and by extension no PR should be accepted without passing pester tests.
+4) If your changes justify a release, incriment the version number appropriately and create one on GitHub and a release to the gallery should trigger via actions.
 
 # To Do
 1) Do the following after [this](https://github.com/RamblingCookieMonster/PSSQLite/pull/26) pull request is merged into PSSqlite
