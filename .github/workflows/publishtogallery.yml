@@ -7,15 +7,12 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-18.04
 
     steps:
     - uses: actions/checkout@v1
-    - name: Update PowerShellGet
-      run: Install-Module -Name PowerShellGet -Force; Exit;
-      shell: pwsh
     - name: Run publish script
       env:
         NuGetApiKey: ${{ secrets.NuGetApiKey }}
-      run: .\PublishToGallery.ps1
+      run: .github\workflows\PublishToGallery.ps1
       shell: pwsh
