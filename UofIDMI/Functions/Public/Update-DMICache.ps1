@@ -22,17 +22,24 @@ function Update-DMICache {
     
     process {
         if(!$ParamCacheOnly){
+            Write-Verbose -Message "ParamCacheOnly not specified. Refreshing database information."
+            Write-Verbose -Message "Querying raw DMI information from $($Script:Settings.DMIURI)."
             $DMI = [System.Collections.ArrayList]@()
             $DMI += Invoke-RestMethod -Method 'Get' -Uri $Script:Settings.DMIURI -ErrorAction Stop | ConvertFrom-Csv -Delimiter "`t"
 
             if($DMI.count -gt 0)
             {
+                Write-Verbose -Message "Raw data received updating database."
                 Invoke-SqliteQuery -DataSource $Script:SQLiteDBPath -Query "DELETE FROM DMI"
-
                 Invoke-SQLiteBulkCopy -DataSource $Script:SQLiteDBPath -DataTable ($DMI | Out-DataTable) -Table 'DMI' -Force
+            }
+            else
+            {
+                Throw "No data returned from $($Script:Settings.DMIURI)."
             }
         }
 
+        Write-Verbose -Message 'Updating parameter cache'
         $Script:BannerOrgCodes.Clear()
         $Script:Deptnames.Clear()
 
