@@ -37,8 +37,10 @@ function Get-DMIDepartment {
     [CmdletBinding(DefaultParametersetname='BannerOrg')]
     param (    
         [parameter(ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true,
             ParameterSetName = 'BannerOrg')]
-        [ValidateSet( [ValidBannerOrgGenerator] )]    
+        [ValidateSet( [ValidBannerOrgGenerator] )]
+        [Alias("owner_code")]    
         [String]$BannerOrg = '%',
 
         [parameter(ParameterSetName = 'Deptname')]
