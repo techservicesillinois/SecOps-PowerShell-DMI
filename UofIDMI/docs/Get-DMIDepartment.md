@@ -58,12 +58,12 @@ Ex: '1A1-NA-NA0-283'
 ```yaml
 Type: String
 Parameter Sets: BannerOrg
-Aliases:
+Aliases: owner_code
 
 Required: False
 Position: Named
 Default value: %
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
