@@ -1,3 +1,5 @@
+![Windows Tests](https://github.com/techservicesillinois/SecOps-PowerShell-DMI/workflows/Windows_Pester/badge.svg)
+
 # What is This?
 This is a PowerShell integration for Division of Management Information at University of Illinois at Urbana-Champaign. This is the system used to join information from sources like CDB to find out who an asset belongs to.
 
