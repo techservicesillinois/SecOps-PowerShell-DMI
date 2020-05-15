@@ -1,4 +1,4 @@
-name: windows_Pester
+name: Windows_Pester
 
 on:
   push:
