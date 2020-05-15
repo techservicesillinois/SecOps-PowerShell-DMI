@@ -1,4 +1,4 @@
-name: pester
+name: windows_Pester
 
 on:
   push:
@@ -17,5 +17,5 @@ jobs:
       run: Install-Module -Name 'Pester','PSSQLite' -Force -SkipPublisherCheck
       shell: pwsh
     - name: Run tests
-      run: Invoke-Pester -Path '.\Tests'
+      run: Invoke-Pester -Path '.\Tests' -ErrorAction Stop
       shell: pwsh
