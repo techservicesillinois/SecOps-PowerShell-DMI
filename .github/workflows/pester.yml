@@ -1,15 +1,14 @@
-name: Windows_Pester
+name: Pester Tests
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-18.04, macos-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v1
@@ -17,5 +16,5 @@ jobs:
       run: Install-Module -Name 'Pester','PSSQLite' -Force -SkipPublisherCheck
       shell: pwsh
     - name: Run tests
-      run: Invoke-Pester -Path '.\tests' -ErrorAction Stop
+      run: Invoke-Pester -Path './tests' -ErrorAction Stop
       shell: pwsh
