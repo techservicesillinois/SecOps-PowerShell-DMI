@@ -1,4 +1,4 @@
-name: Windows_Pester
+name: Ubuntu_Pester
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-18.04
 
     steps:
     - uses: actions/checkout@v1
@@ -17,5 +17,5 @@ jobs:
       run: Install-Module -Name 'Pester','PSSQLite' -Force -SkipPublisherCheck
       shell: pwsh
     - name: Run tests
-      run: Invoke-Pester -Path '.\tests' -ErrorAction Stop
+      run: Invoke-Pester -Path './tests' -ErrorAction Stop
       shell: pwsh
