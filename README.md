@@ -1,4 +1,5 @@
 ![Windows Tests](https://github.com/techservicesillinois/SecOps-PowerShell-DMI/workflows/Windows_Pester/badge.svg)
+![Ubuntu Tests](https://github.com/techservicesillinois/SecOps-PowerShell-DMI/workflows/Ubuntu_Pester/badge.svg)
 
 # What is This?
 This is a PowerShell integration for Division of Management Information at University of Illinois at Urbana-Champaign. This is the system used to join information from sources like CDB to find out who an asset belongs to.
@@ -21,7 +22,3 @@ This is a PowerShell integration for Division of Management Information at Unive
 4) If your changes justify a release, incriment the version number appropriately and create one on GitHub and a release to the gallery should trigger via actions.
 
 # To Do
-1) Do the following after [this](https://github.com/RamblingCookieMonster/PSSQLite/pull/26) pull request is merged into PSSqlite
-   1) Remove '-As DataRow' references from Get-DMIDepartment and Update-DMICache
-   2) Update manifest to require the new version of PSSqlite
-   3) Officially declare Mac/Linux support
