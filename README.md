@@ -22,7 +22,3 @@ This is a PowerShell integration for Division of Management Information at Unive
 4) If your changes justify a release, incriment the version number appropriately and create one on GitHub and a release to the gallery should trigger via actions.
 
 # To Do
-1) Do the following after [this](https://github.com/RamblingCookieMonster/PSSQLite/pull/26) pull request is merged into PSSqlite
-   1) Remove '-As DataRow' references from Get-DMIDepartment and Update-DMICache
-   2) Update manifest to require the new version of PSSqlite
-   3) Officially declare Mac/Linux support

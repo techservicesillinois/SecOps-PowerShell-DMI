@@ -56,7 +56,6 @@ function Get-DMIDepartment {
         $Splat = @{
             Datasource = $Script:SQLiteDBPath
             Query = 'SELECT * FROM DMI WHERE Banner_Org like @BannerOrg AND Deptname like @Deptname'
-            As = 'DataRow'
             SqlParameters = @{
                 BannerOrg = $BannerOrg.Replace('*','%')
                 Deptname = $Deptname.Replace('*','%')
