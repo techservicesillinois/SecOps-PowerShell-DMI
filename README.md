@@ -1,6 +1,4 @@
-![Windows Tests](https://github.com/techservicesillinois/SecOps-PowerShell-DMI/workflows/Windows_Pester/badge.svg)
-![Ubuntu Tests](https://github.com/techservicesillinois/SecOps-PowerShell-DMI/workflows/Ubuntu_Pester/badge.svg)
-![MacOS Tests](https://github.com/techservicesillinois/SecOps-PowerShell-DMI/workflows/MacOS_Pester/badge.svg)
+![Pester Tests](https://github.com/techservicesillinois/SecOps-PowerShell-DMI/workflows/Pester%20Tests/badge.svg)
 
 # What is This?
 This is a PowerShell integration for Division of Management Information at University of Illinois at Urbana-Champaign. This is the system used to join information from sources like CDB to find out who an asset belongs to.
