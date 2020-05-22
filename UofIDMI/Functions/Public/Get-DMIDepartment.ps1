@@ -39,12 +39,14 @@ function Get-DMIDepartment {
         [parameter(ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
             ParameterSetName = 'BannerOrg')]
-        [ValidateSet( [ValidBannerOrgGenerator] )]
+        [ValidateSet([ValidBannerOrgGenerator],
+            ErrorMessage = "{0} is not a valid banner org code.")]
         [Alias("owner_code")]    
         [String]$BannerOrg = '%',
 
         [parameter(ParameterSetName = 'Deptname')]
-        [ValidateSet( [ValidDeptnameGenerator] )]    
+        [ValidateSet([ValidDeptnameGenerator],
+            ErrorMessage = "{0} is not a valid department name.")]    
         [String]$Deptname = '%'
     )
 
