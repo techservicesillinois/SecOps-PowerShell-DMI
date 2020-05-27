@@ -16,5 +16,5 @@ jobs:
       run: Install-Module -Name 'PSSQLite' -Force -SkipPublisherCheck; Install-Module -Name 'Pester' -Force -SkipPublisherCheck -RequiredVersion '4.10.1'
       shell: pwsh
     - name: Run tests
-      run: Invoke-Pester -Path './tests' -CI -ErrorAction Stop
+      run: Invoke-Pester -Path './tests' -EnableExit -ErrorAction Stop
       shell: pwsh
