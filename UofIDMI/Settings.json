@@ -1,6 +1,5 @@
 {
     "DMIURI":"http://www.dmi.illinois.edu/ddd/mktext.asp",
     "UpdateCacheOnImport":true,
-    "DMIEnduserITSupportURI":"http://www.dmi.illinois.edu/ddd/mkexcel.aspx?role=17&roleDesc=End-user%20IT%20Support",
-    "IncludeEnduserITSupport":true
+    "DMIEnduserITSupportURI":"https://www.dmi.illinois.edu/ddd/mkjsonenduserit.asp"
 }
