@@ -38,7 +38,7 @@ function Update-DMICache {
                 Throw "No data returned from $($Script:Settings.DMIURI)."
             }
 
-            (Invoke-RestMethod -Method 'GET' -Uri $Script:Settings.DMIEnduserITSupportURI) | Group-Object -property  'org' | ForEach-Object -Process {
+            (Invoke-RestMethod -Method 'GET' -Uri $Script:Settings.DMIEnduserITSupportURI) | Where-Object -FilterScript {$Null -ne $_.NetID} | Group-Object -property  'org' | ForEach-Object -Process {
                 $UpdateSplat = @{
                     DataSource = $Script:SQLiteDBPath
                     Query = "UPDATE DMI SET EndUserITSupportNetId = @EndUserITSupportNetId WHERE Banner_Org = @BannerOrg"
