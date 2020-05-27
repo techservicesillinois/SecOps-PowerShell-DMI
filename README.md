@@ -20,4 +20,4 @@ This is a PowerShell integration for Division of Management Information at Unive
 3) Any new functionality should have associated pester tests added to the UofIDMI.Tests.ps1 file and by extension no PR should be accepted without passing pester tests.
 4) If your changes justify a release, increment the version number appropriately and create one on GitHub and a release to the gallery should trigger via actions.
 
-# To Do
+# To Do werwe
