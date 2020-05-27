@@ -38,17 +38,16 @@ function Update-DMICache {
                 Throw "No data returned from $($Script:Settings.DMIURI)."
             }
 
-            (Invoke-RestMethod -Method 'GET' -Uri $Script:Settings.DMIEnduserITSupportURI) | Where-Object -FilterScript {$Null -ne $_.NetID} | Group-Object -property  'org' | ForEach-Object -Process {
-                $UpdateSplat = @{
-                    DataSource = $Script:SQLiteDBPath
-                    Query = "UPDATE DMI SET EndUserITSupportNetId = @EndUserITSupportNetId WHERE Banner_Org = @BannerOrg"
-                    SqlParameters = @{
-                        'BannerOrg' = $_.Name
-                        'EndUserITSupportNetId' = ($_.Group).NETID -join ','
-                    }
-                }
-                Invoke-SqliteQuery @UpdateSplat
+            $UpdateSplat = @{
+                DataSource = $Script:SQLiteDBPath
+                Query = "UPDATE DMI SET EndUserITSupportNetId = CASE Banner_Org"
             }
+
+            (Invoke-RestMethod -Method 'GET' -Uri $Script:Settings.DMIEnduserITSupportURI) | Where-Object -FilterScript {$Null -ne $_.NetID} | Group-Object -property  'org' | ForEach-Object -Process {
+                $UpdateSplat['Query'] += "WHEN $($_.Name) THEN $(($_.Group).NETID -join ',')"
+            }
+
+            Invoke-SqliteQuery @UpdateSplat
         }
 
         Write-Verbose -Message 'Updating parameter cache'
