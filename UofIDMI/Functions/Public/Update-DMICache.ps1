@@ -47,7 +47,7 @@ function Update-DMICache {
             $TechContact += Invoke-RestMethod -Method 'GET' -Uri $Script:Settings.DMIEnduserITSupportURI
 
             $TechContact | Where-Object -FilterScript {$Null -ne $_.NetID} | Group-Object -property  'org' | ForEach-Object -Process {
-                $UpdateSplat['Query'] += "WHEN '$($_.Name)' THEN '$(($_.Group).NETID -join ',')'"
+                $UpdateSplat['Query'] += " WHEN '$($_.Name)' THEN '$(($_.Group).NETID -join ',')'"
             }
 
             Invoke-SqliteQuery @UpdateSplat
