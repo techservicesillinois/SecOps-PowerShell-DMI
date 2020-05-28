@@ -13,8 +13,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install dependencies
-      run: Install-Module -Name 'Pester','PSSQLite' -Force -SkipPublisherCheck
+      run: Install-Module -Name 'PSSQLite' -Force -SkipPublisherCheck; Install-Module -Name 'Pester' -Force -SkipPublisherCheck -RequiredVersion '4.10.1'
       shell: pwsh
     - name: Run tests
-      run: Invoke-Pester -Path './tests' -ErrorAction Stop
+      run: Invoke-Pester -Path './tests' -EnableExit -ErrorAction Stop
       shell: pwsh

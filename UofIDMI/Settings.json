@@ -1,4 +1,5 @@
 {
     "DMIURI":"http://www.dmi.illinois.edu/ddd/mktext.asp",
-    "UpdateCacheOnImport":true
+    "UpdateCacheOnImport":true,
+    "DMIEnduserITSupportURI":"https://www.dmi.illinois.edu/ddd/mkjsonenduserit.asp"
 }

@@ -42,6 +42,7 @@ function New-DMISQLiteDB {
             areaCode TEXT,
             Phone TEXT,
             NetId TEXT,
+            EndUserITSupportNetId TEXT,
             CIP TEXT,
             Comments TEXT,
             DeptType TEXT,
