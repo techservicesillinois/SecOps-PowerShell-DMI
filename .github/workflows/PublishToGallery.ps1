@@ -1,6 +1,7 @@
 try{
     Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-    Install-Module -Name 'PSSQLite' -Force -SkipPublisherCheck
+    Install-Module -Name 'PSDepend' -Force -SkipPublisherCheck
+    Invoke-PSDepend -Path "$($PSScriptRoot)\requirements.psd1"
     Publish-Module -Path ".\UofIDMI" -Repository PSGallery -NuGetApiKey $ENV:NuGetApiKey -Force
 }
 catch{
