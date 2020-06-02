@@ -51,7 +51,7 @@ PowerShellVersion = '7.0.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @("MyModule", @{ModuleName="PSSQLite"; ModuleVersion="1.1"; GUID="381f3394-9b8a-492e-94b4-b3aa9e775761"})
+RequiredModules = @(@{ModuleName="PSSQLite"; ModuleVersion="1.1"; GUID="381f3394-9b8a-492e-94b4-b3aa9e775761"})
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
