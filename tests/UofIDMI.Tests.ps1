@@ -82,9 +82,3 @@ Describe 'Get-DMIDepartment'{
         { Get-DMIDepartment -BannerOrg 'random' -Deptname 'random' } | Should -Throw
     }
 }
-
-Describe 'failure' {
-    It 'derp' {
-        5 | Should -Be 7
-    }
-}
