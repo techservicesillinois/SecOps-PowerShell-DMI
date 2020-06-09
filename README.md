@@ -21,4 +21,4 @@ This is a PowerShell integration for Division of Management Information at Unive
 4) If your changes justify a release, increment the version number appropriately and create one on GitHub and a release to the gallery should trigger via actions.
 
 # To Do
-1) Update pester tests to be compatible with pester v5
+1) Incorporate code coverage tests into the CI.
