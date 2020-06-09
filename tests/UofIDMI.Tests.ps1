@@ -1,22 +1,23 @@
 [String]$ModuleRoot = Join-Path -Path (Split-Path -Path $PSScriptRoot -Parent) -ChildPath 'UofIDMI'
 Import-Module -Name $ModuleRoot -ArgumentList $True
-[String]$DBPath = Join-Path -Path $ModuleRoot -ChildPath 'DMI.SQLite'
 
-Describe 'New-DMISQLiteDB'{
+InModuleScope 'UofIDMI' {
+    Describe 'New-DMISQLiteDB'{
 
-    It 'Does not throw an exception when the file is absent' {
-        Remove-Item -Path $DBPath -Force -ErrorAction SilentlyContinue
-        { New-DMISQLiteDB -ErrorAction Stop } | Should -Not -Throw
-        Remove-Item -Path $DBPath -Force -ErrorAction SilentlyContinue
-    }
+        It 'Does not throw an exception when the file is absent' {
+            Remove-Item -Path $Script:SQLiteDBPath -Force -ErrorAction SilentlyContinue
+            { New-DMISQLiteDB -ErrorAction Stop } | Should -Not -Throw
+            Remove-Item -Path $Script:SQLiteDBPath -Force -ErrorAction SilentlyContinue
+        }
 
-    It 'Does not throw an exception when the file is present' {
-        New-Item -Path $DBPath -Force -ItemType File
-        { New-DMISQLiteDB -ErrorAction Stop } | Should -Not -Throw
-    }
+        It 'Does not throw an exception when the file is present' {
+            New-Item -Path $Script:SQLiteDBPath -Force -ItemType File
+            { New-DMISQLiteDB -ErrorAction Stop } | Should -Not -Throw
+        }
 
-    It 'Creates a valid table' {
-        (Invoke-SqliteQuery -DataSource $DBPath -Query "SELECT * FROM sqlite_master WHERE tbl_name = 'DMI' AND type = 'table'" -As DataRow -ErrorAction Stop | Measure-Object).count | Should -Be 1
+        It 'Creates a valid table' {
+            (Invoke-SqliteQuery -DataSource $Script:SQLiteDBPath -Query "SELECT * FROM sqlite_master WHERE tbl_name = 'DMI' AND type = 'table'" -As DataRow -ErrorAction Stop | Measure-Object).count | Should -Be 1
+        }
     }
 }
 
@@ -27,14 +28,16 @@ Describe 'Update-DMICache'{
         { Update-DMICache -ErrorAction Stop } | Should -Not -Throw
     }
 
-    It 'Does not alter the database if ParamCacheOnly is specified' {
-        New-DMISQLiteDB -ErrorAction Stop
-        Update-DMICache -ErrorAction Stop
-        $FirstTimestamp = Get-item -Path $DBPath
-        Start-Sleep -Seconds 1
-        Update-DMICache -ParamCacheOnly -ErrorAction Stop
-        $SecondTimestamp = Get-item -Path $DBPath
-        $FirstTimestamp.LastWriteTime -eq $SecondTimestamp.LastWriteTime | Should -Be $True
+    InModuleScope 'UofIDMI' {
+        It 'Does not alter the database if ParamCacheOnly is specified' {
+            New-DMISQLiteDB -ErrorAction Stop
+            Update-DMICache -ErrorAction Stop
+            $FirstTimestamp = Get-item -Path $Script:SQLiteDBPath
+            Start-Sleep -Seconds 1
+            Update-DMICache -ParamCacheOnly -ErrorAction Stop
+            $SecondTimestamp = Get-item -Path $Script:SQLiteDBPath
+            $FirstTimestamp.LastWriteTime -eq $SecondTimestamp.LastWriteTime | Should -Be $True
+        }
     }
 
     InModuleScope 'UofIDMI' {
@@ -50,9 +53,12 @@ Describe 'Update-DMICache'{
 }
 
 Describe 'Get-DMIDepartment'{
-    New-DMISQLiteDB -ErrorAction Stop
-    Update-DMICache -ErrorAction Stop
-
+    
+    BeforeAll {
+        New-DMISQLiteDB -ErrorAction Stop
+        Update-DMICache -ErrorAction Stop
+    }
+    
     It 'Returns all results if nothing is specified' {
         (Get-DMIDepartment | Measure-Object).Count -gt 1 | Should -Be $True
     }
@@ -74,5 +80,11 @@ Describe 'Get-DMIDepartment'{
 
     It 'Doesn''t allow BannerOrg and Deptname together' {
         { Get-DMIDepartment -BannerOrg 'random' -Deptname 'random' } | Should -Throw
+    }
+}
+
+Describe 'failure' {
+    It 'derp' {
+        5 | Should -Be 7
     }
 }
