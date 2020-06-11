@@ -1,4 +1,4 @@
-<#
+﻿<#
 .Synopsis
    This command will update the contents of the SQLite database created by New-DMISQLiteDB.
 .DESCRIPTION
@@ -15,11 +15,11 @@ function Update-DMICache {
     param (
         [Switch]$ParamCacheOnly
     )
-    
+
     begin {
-        
+
     }
-    
+
     process {
         if(!$ParamCacheOnly){
             Write-Verbose -Message "ParamCacheOnly not specified. Refreshing database information."
@@ -61,8 +61,8 @@ function Update-DMICache {
         $Script:BannerOrgCodes += (Get-DMIDepartment).Banner_Org
         $Script:Deptnames += (Get-DMIDepartment).Deptname
     }
-    
+
     end {
-        
+
     }
 }

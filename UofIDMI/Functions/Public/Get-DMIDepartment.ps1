@@ -1,4 +1,4 @@
-using namespace System.Management.Automation
+﻿using namespace System.Management.Automation
 #These classes are a necessary workaround to use variables as validate sets. Hopefully Microsoft bakes this in someday.
 class ValidBannerOrgGenerator : IValidateSetValuesGenerator {
     [string[]] GetValidValues() {
@@ -35,25 +35,25 @@ class ValidDeptnameGenerator : IValidateSetValuesGenerator {
 #>
 function Get-DMIDepartment {
     [CmdletBinding(DefaultParametersetname='BannerOrg')]
-    param (    
+    param (
         [parameter(ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
             ParameterSetName = 'BannerOrg')]
         [ValidateSet([ValidBannerOrgGenerator],
             ErrorMessage = "'{0}' is not a valid banner org code.")]
-        [Alias("owner_code")]    
+        [Alias("owner_code")]
         [String]$BannerOrg = '%',
 
         [parameter(ParameterSetName = 'Deptname')]
         [ValidateSet([ValidDeptnameGenerator],
-            ErrorMessage = "'{0}' is not a valid department name.")]    
+            ErrorMessage = "'{0}' is not a valid department name.")]
         [String]$Deptname = '%'
     )
 
     begin {
-        
+
     }
-    
+
     process {
         $Splat = @{
             Datasource = $Script:SQLiteDBPath
@@ -63,11 +63,11 @@ function Get-DMIDepartment {
                 Deptname = $Deptname.Replace('*','%')
             }
         }
-        
+
         Invoke-SqliteQuery @Splat
     }
-    
+
     end {
-        
+
     }
 }
