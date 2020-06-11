@@ -1,10 +1,5 @@
-BeforeAll {
-    [String]$ModuleRoot = Join-Path -Path (Split-Path -Path $PSScriptRoot -Parent) -ChildPath 'UofIDMI'
-    Import-Module -Name $ModuleRoot -ArgumentList $True
-
-    $ScriptAnalyzerRules = Get-ScriptAnalyzerRule -Name "PSAvoid*"
-    $Files = Get-ChildItem -Path 'C:\Repos\SecOps-PowerShell-DMI\UofIDMI' -Filter "*.ps*" -Recurse
-}
+[String]$ModuleRoot = Join-Path -Path (Split-Path -Path $PSScriptRoot -Parent) -ChildPath 'UofIDMI'
+Import-Module -Name $ModuleRoot -ArgumentList $True
 
 InModuleScope 'UofIDMI' {
     Describe 'New-DMISQLiteDB'{
