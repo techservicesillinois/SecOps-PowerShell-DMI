@@ -1,5 +1,10 @@
-[String]$ModuleRoot = Join-Path -Path (Split-Path -Path $PSScriptRoot -Parent) -ChildPath 'UofIDMI'
-Import-Module -Name $ModuleRoot -ArgumentList $True
+BeforeAll {
+    [String]$ModuleRoot = Join-Path -Path (Split-Path -Path $PSScriptRoot -Parent) -ChildPath 'UofIDMI'
+    Import-Module -Name $ModuleRoot -ArgumentList $True
+
+    $ScriptAnalyzerRules = Get-ScriptAnalyzerRule -Name "PSAvoid*"
+    $Files = Get-ChildItem -Path 'C:\Repos\SecOps-PowerShell-DMI\UofIDMI' -Filter "*.ps*" -Recurse
+}
 
 InModuleScope 'UofIDMI' {
     Describe 'New-DMISQLiteDB'{
@@ -80,5 +85,15 @@ Describe 'Get-DMIDepartment'{
 
     It 'Doesn''t allow BannerOrg and Deptname together' {
         { Get-DMIDepartment -BannerOrg 'random' -Deptname 'random' } | Should -Throw
+    }
+}
+
+Describe 'PSScriptAnalyzer analysis' {
+    Foreach($File in $Files) {
+        Foreach($Rule in $ScriptAnalyzerRules){
+            It "$($File.Name) should not return any violation for the rule : $($Rule.RuleName)" {
+                Invoke-ScriptAnalyzer -Path $File.FullName -IncludeRule $Rule.RuleName | Should -BeNullOrEmpty
+            }
+        }
     }
 }
