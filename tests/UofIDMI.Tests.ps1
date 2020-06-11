@@ -89,11 +89,14 @@ Describe 'Get-DMIDepartment'{
 }
 
 Describe 'PSScriptAnalyzer analysis' {
-    Foreach($File in $Files) {
-        Foreach($Rule in $ScriptAnalyzerRules){
-            It "$($File.Name) should not return any violation for the rule : $($Rule.RuleName)" {
-                Invoke-ScriptAnalyzer -Path $File.FullName -IncludeRule $Rule.RuleName | Should -BeNullOrEmpty
-            }
+    $ScriptAnalyzerRules = Get-ScriptAnalyzerRule -Name "PSAvoid*"
+    $Cases = Get-ChildItem -Path $ModuleRoot -Filter "*.ps*" -Recurse | ForEach-Object -Process {
+        foreach ($Rule in $ScriptAnalyzerRules) {
+            @{ File = $_.FullName; Rule = $Rule }
         }
+    }
+
+    It "<File> should not return any violation for the <Rule> rule" -TestCases $Cases {
+        Invoke-ScriptAnalyzer -Path $File -IncludeRule $Rule.RuleName | Should -BeNullOrEmpty
     }
 }
