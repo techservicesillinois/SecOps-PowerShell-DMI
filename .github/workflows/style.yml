@@ -15,6 +15,6 @@ jobs:
     - name: Install dependencies
       run: Install-Module -Name 'PSScriptAnalyzer' -Force -SkipPublisherCheck
       shell: pwsh
-    - name: Run tests
+    - name: ScriptAnalyzer
       run: Invoke-ScriptAnalyzer -Path '.\UofIDMI\' -Recurse -EnableExit
       shell: pwsh
