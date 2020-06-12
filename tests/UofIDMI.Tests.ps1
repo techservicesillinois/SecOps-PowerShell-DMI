@@ -82,16 +82,3 @@ Describe 'Get-DMIDepartment'{
         { Get-DMIDepartment -BannerOrg 'random' -Deptname 'random' } | Should -Throw
     }
 }
-
-Describe 'PSScriptAnalyzer analysis' {
-    $ScriptAnalyzerRules = Get-ScriptAnalyzerRule -Name "PSAvoid*"
-    $Cases = Get-ChildItem -Path $ModuleRoot -Filter "*.ps*" -Recurse | ForEach-Object -Process {
-        foreach ($Rule in $ScriptAnalyzerRules) {
-            @{ File = $_.FullName; Rule = $Rule }
-        }
-    }
-
-    It "<File> should not return any violation for the <Rule> rule" -TestCases $Cases {
-        Invoke-ScriptAnalyzer -Path $File -IncludeRule $Rule.RuleName | Should -BeNullOrEmpty
-    }
-}
