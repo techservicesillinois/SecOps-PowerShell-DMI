@@ -11,7 +11,7 @@
    This will clear out and populate the SQLite database. It will also update the tab completion cache for Get-DMIDepartment.
 #>
 function Update-DMICache {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     param (
         [Switch]$ParamCacheOnly
     )

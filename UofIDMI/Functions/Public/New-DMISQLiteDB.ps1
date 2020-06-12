@@ -7,7 +7,7 @@
    PS C:\> New-DMISQLiteDB
 #>
 function New-DMISQLiteDB {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     param (
 
     )
