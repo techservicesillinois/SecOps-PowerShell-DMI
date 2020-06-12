@@ -1,4 +1,4 @@
-<#
+﻿<#
 .Synopsis
    Creates a new instance of a SQLite database locally to store the DMI information in. This should be created automatically by the module.
 .DESCRIPTION
@@ -7,21 +7,21 @@
    PS C:\> New-DMISQLiteDB
 #>
 function New-DMISQLiteDB {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     param (
-        
+
     )
-    
+
     begin {
-        
+
     }
-    
+
     process {
         if(Test-Path -Path $Script:SQLiteDBPath){
             Write-Verbose -Message "Existing database found. Removing $($Script:SQLiteDBPath)"
             Remove-Item -Path $Script:SQLiteDBPath -Force
         }
-        
+
         [String]$Query = "CREATE TABLE DMI (
             Banner_Org VARCHAR(14) PRIMARY KEY,
             Legacy_Code TEXT,
@@ -61,8 +61,8 @@ function New-DMISQLiteDB {
 
             Invoke-SqliteQuery -Query $Query -DataSource $Script:SQLiteDBPath
     }
-    
+
     end {
-        
+
     }
 }
