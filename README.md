@@ -1,3 +1,7 @@
+# This Repository has been Archived
+We are no longer maintaining this repository due to broken SQLite dependencies and lack of active usage.
+For information on access to DMI/DAIR see: https://dair.illinois.edu/access-data/
+
 ![Pester Tests](https://github.com/techservicesillinois/SecOps-PowerShell-DMI/workflows/Pester%20Tests/badge.svg)
 ![ScriptAnalyzer](https://github.com/techservicesillinois/SecOps-PowerShell-DMI/workflows/ScriptAnalyzer/badge.svg)
 
@@ -20,6 +24,3 @@ This is a PowerShell integration for Division of Management Information at Unive
 2) Ensure the docs folder is kept up to date as well as the comment based help. The docs are generated via the PlatyPS module available on the PS Gallery.
 3) Any new functionality should have associated pester tests added to the UofIDMI.Tests.ps1 file and by extension no PR should be accepted without passing pester tests.
 4) If your changes justify a release, increment the version number appropriately and create one on GitHub and a release to the gallery should trigger via actions.
-
-# To Do
-1) Incorporate code coverage tests into the CI.
